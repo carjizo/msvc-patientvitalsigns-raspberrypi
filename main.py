@@ -1,9 +1,6 @@
-# from request_api.api_users import ApisUsers
-#
+# from request_api.api_patient_vital_signs import ApisUsers
 # apis_users = ApisUsers()
-#
-# data = apis_users.create_user(56,32)
-# print(data)
+# data = apis_users.insert_patient_signs(40,80, 1)
 
 from mqtt.mqtt import MQTT
 

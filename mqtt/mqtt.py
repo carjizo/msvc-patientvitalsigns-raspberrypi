@@ -2,7 +2,7 @@ import json
 
 import paho.mqtt.client as mqtt
 import mqtt.config as cfg
-from request_api.api_users import ApisUsers
+from request_api.api_patient_vital_signs import ApisUsers
 
 
 class MQTT:
@@ -27,13 +27,13 @@ class MQTT:
             data = json.loads(payload)
             pulso = data.get("pulso")
             temperatura = data.get("temperatura")
-            paciente_id = data.get("paciente_id")
-
+            # paciente_id = data.get("paciente_id")
+            paciente_id = 1
             if pulso is not None and temperatura is not None and paciente_id is not None:
-                print(f"Pulso: {pulso} lpm, Temperatura: {temperatura}°C")
+                print(f"Pulso: {pulso} lpm, Temperatura: {temperatura}°C, pacienteId: {paciente_id}")
                 # USAR LA API PARA REGISTRAR LOS PULSOS
                 create_users = ApisUsers()
-                create_users.create_user(temperatura, pulso, paciente_id)
+                create_users.insert_patient_signs(temperatura, pulso, paciente_id)
 
         except Exception as e:
             print("Error al procesar el mensaje MQTT:", str(e))
