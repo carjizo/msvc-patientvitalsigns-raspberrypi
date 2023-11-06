@@ -1,12 +1,13 @@
 import requests
 from jwt.jwt import JWT
+import request_api.config as cfg
 
 
 class ApisUsers:
     """ APIS del para el microservicio Users """
 
     def __init__(self):
-        pass
+        self.URL_INSERT_PATIENT_SIGNS = cfg.INSERT_PATIENT_SIGNS
 
     def insert_patient_signs(self, temp, pulso, paciente_id):
         """ API REGISTRAR UN USUARIO """
@@ -14,7 +15,7 @@ class ApisUsers:
         jwt = JWT()
         token = jwt.get_token()
         if token != 'NOT_TOKEN':
-            url = 'https://msvc-patientvitalsigns-production.up.railway.app/patient-vital-signs/create'
+            url = self.URL_INSERT_PATIENT_SIGNS
             bearer_token = token  # Reemplaza con tu token de portador
 
             headers = {
