@@ -1,16 +1,16 @@
 import json
-
 import paho.mqtt.client as mqtt
 import mqtt.config as cfg
 from request_api.api_patient_vital_signs import ApisUsers
 
-
 class MQTT:
-
-    def __int__(self):
+    def __init__(self):  # Corrige el nombre del constructor
         self.mqtt_topic = cfg.TOPIC
         self.mqtt_port = cfg.PORT
         self.mqtt_broker = cfg.BROKER
+
+    # Resto del código sin cambios
+
 
     def on_connect(self, client, userdata, flags, rc):
         """ CONECTANDO AL BROKER Y VERIFICA """
